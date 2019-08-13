@@ -5,7 +5,7 @@ using System.Reflection;
 
 namespace SampleModVehicle
 {
-    [ACMFMod(id: "TestVehicleTestBed", name: "Test Vehicle Test Bed", modVersion: "1.0.0", requiredACMLVersion: "0.1.0")]
+    [ACMFMod(id: "ACMF.SampleMod.TestVehicle", name: "Sample-Mod-Test-Vehicle", modVersion: "1.0.0", requiredACMLVersion: "0.0.0")]
     public class EntryPoint
     {
         public static HarmonyInstance HarmonyInstance { get; private set; }

@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using UnityEngine;
@@ -9,22 +10,31 @@ namespace ACMF.ModHelper.Utilities.Misc
     {
         private static readonly string DUMPS_FOLDER_NAME = "Dumps";
 
-        public static void DumpFields(this GameObject mb)
+        public static void DumpFields(this GameObject mb, bool printUnityComponents = true)
         {
             string path = Path.Combine(ACMF.ACMFFolderLocation, DUMPS_FOLDER_NAME);
             Directory.CreateDirectory(path);
             string fileLocation = Path.Combine(path, $"{mb.name}.txt");
             TextWriter stream = new StreamWriter(fileLocation, false);
 
-            stream.WriteLine($"Generated From Gameobject {mb.name} at {System.DateTime.Now.ToString()}");
+            stream.WriteLine($"Generated From Gameobject {mb.name} at {DateTime.Now.ToString()}");
             foreach (Component c in mb.GetComponentsInChildren<Component>())
             {
+                if (printUnityComponents == false && IsUnityComponent(c.GetType()))
+                    continue;
+
                 stream.WriteLine($"Component {c.name} || Type {c.GetType()} || Parent {c.transform.parent?.name}");
                 DumpComponentToStream(c, stream);
                 stream.WriteLine(" ");
             }
 
             stream.Close();
+        }
+
+        private static bool IsUnityComponent(Type t)
+        {
+            return t == typeof(Transform) || t == typeof(Light) || t == typeof(SpriteRenderer) || t == typeof(RectTransform)
+                || t == typeof(ParticleSystem) || t == typeof(ParticleSystemRenderer);
         }
 
         private static void DumpComponentToStream(Component c, TextWriter stream)

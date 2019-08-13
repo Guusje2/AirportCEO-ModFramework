@@ -6,7 +6,7 @@ namespace SampleModVehicle
 {
     public class TestTruckCreator : ServiceVehicleCreator<TestTruckController>
     {
-        protected override GameObject VehicleGameObject => Assets.Instance.AttemptLoadGameObject("TestTruck");
+        protected override GameObject VehicleGameObject { get; } = Assets.Instance.AttemptLoadGameObject("TestTruck");
         protected override string[] FrontDoorTransforms => new string[2] { "Doors/FrontDoor1", "Doors/FrontDoor2" };
         protected override string[] RearDoorTransforms => new string[0];
         protected override string[] CargoDoorTransforms => new string[0];
@@ -17,7 +17,7 @@ namespace SampleModVehicle
 
         public static GameObject SpawnRegular()
         {
-            GameObject vehicle = ServiceVehicleCreator.GetCreator<TestTruckController>().CreateNewInstance();
+            GameObject vehicle = ActiveServiceVehicleCreators.GetCreator<TestTruckController>().CreateNewInstance();
             TestTruckController controller = vehicle.GetComponent<TestTruckController>();
             controller.Initialize();
             controller.ServiceVehicleModel.isOwnedByAirport = true;

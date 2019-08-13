@@ -5,8 +5,8 @@ namespace ACMF.ModHelper.Utilities
 {
     public class Logger
     {
-        internal static void Error(string message, bool alertInGame = false) => Print($"[ERROR] {message}", alertInGame);
-        internal static void Print(string message, bool alertInGame = false)
+        public static void Error(string message, bool alertInGame = false) => Print($"[ERROR] {message}", alertInGame);
+        public static void Print(string message, bool alertInGame = false)
         {
             Console.WriteLine($"[AirportCEOModFramework] {message}");
 
@@ -14,7 +14,7 @@ namespace ACMF.ModHelper.Utilities
                 ShowNotification(message);
         }
 
-        internal static void Print<T>(ICollection<T> collection)
+        public static void Print<T>(ICollection<T> collection)
         {
             Print($"Printing {collection} || Size {collection.Count}");
             int no = 1;
@@ -25,7 +25,7 @@ namespace ACMF.ModHelper.Utilities
             }
         }
 
-        internal static void Print<T>(IEnumerable<T> enumerable)
+        public static void Print<T>(IEnumerable<T> enumerable)
         {
             Print($"Printing {enumerable}");
             int no = 1;
@@ -36,7 +36,7 @@ namespace ACMF.ModHelper.Utilities
             }
         }
 
-        internal static void Print<T>(T[] array)
+        public static void Print<T>(T[] array)
         {
             Print($"Printing {array}");
             int no = 1;
@@ -47,7 +47,7 @@ namespace ACMF.ModHelper.Utilities
             }
         }
 
-        internal static void Print(Array array)
+        public static void Print(Array array)
         {
             Print($"Printing {array}");
             int no = 1;

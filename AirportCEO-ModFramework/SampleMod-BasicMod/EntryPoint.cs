@@ -6,7 +6,7 @@ using UnityEngine;
 
 namespace SampleModBasicMod
 {
-    [ACMFMod(id: "Hanks.Tom.SampleMod", name: "Sample Mod", modVersion: "12.3.5", requiredACMLVersion: "0.1.0")]
+    [ACMFMod(id: "ACMF.SampleMod.BasicMod", name: "Sample-Mod-Basic-Mod", modVersion: "12.3.5", requiredACMLVersion: "0.0.0")]
     public class EntryPoint
     {
         public static Config Config { get; private set; } = null;

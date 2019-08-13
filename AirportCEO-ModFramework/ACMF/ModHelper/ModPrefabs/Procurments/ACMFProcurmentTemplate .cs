@@ -1,5 +1,6 @@
 ﻿using ACMF.ModHelper.EnumPatcher;
 using ACMF.ModHelper.PatchTime;
+using ACMF.ModHelper.PatchTime.MethodAttributes;
 using System;
 using UnityEngine;
 

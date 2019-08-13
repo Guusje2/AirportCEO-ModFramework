@@ -9,6 +9,7 @@ namespace SampleModVehicle
         protected override string AssetBundleName => "testvehicle";
         protected override string AssetBundleLocation => throw new System.NotImplementedException();
         protected override bool InSameDirectoryAsDLL => true;
+        protected override bool ShouldLogContents => false;
 
         private Assets() { }
     }
