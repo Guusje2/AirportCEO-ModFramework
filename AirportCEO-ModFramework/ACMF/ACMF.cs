@@ -1,8 +1,8 @@
-﻿using ACMF.ModHelper.EnumPatcher;
-using ACMF.ModHelper.PatchTime;
+﻿using ACMF.ModHelper.PatchTime;
 using ACMF.ModLoader;
 using ACMF.ModLoader.Utilities;
 using Harmony;
+using System.Diagnostics;
 using System.IO;
 using System.Reflection;
 
@@ -23,6 +23,9 @@ namespace ACMF
                 return;
 
             Initialised = true;
+            Stopwatch stopwatch = new Stopwatch();
+            stopwatch.Start();
+
             Logger.Print($"ACMF Directory: {ACMFFolderLocation}");
             Logger.Print($"Loading all DLLS in {ACMFFolderLocation}");
 
@@ -46,6 +49,9 @@ namespace ACMF
 
             Logger.Print($"Executing PatchTime");
             PatchTimeManager.Initialise();
+
+            stopwatch.Stop();
+            Logger.Print($"ACMF took {stopwatch.ElapsedMilliseconds} ms to load.");
         }
     }
 }

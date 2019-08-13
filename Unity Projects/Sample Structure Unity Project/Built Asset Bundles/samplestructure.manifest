@@ -1,0 +1,59 @@
+ManifestFileVersion: 0
+CRC: 2292872733
+Hashes:
+  AssetFileHash:
+    serializedVersion: 2
+    Hash: a48c07e4adee1fa3bc3fd11a2be4b0bc
+  TypeTreeHash:
+    serializedVersion: 2
+    Hash: 253b84622e5f1c9dba3fa4ebbe022f05
+HashAppended: 0
+ClassTypes:
+- Class: 1
+  Script: {instanceID: 0}
+- Class: 4
+  Script: {instanceID: 0}
+- Class: 21
+  Script: {instanceID: 0}
+- Class: 28
+  Script: {instanceID: 0}
+- Class: 48
+  Script: {instanceID: 0}
+- Class: 74
+  Script: {instanceID: 0}
+- Class: 91
+  Script: {instanceID: 0}
+- Class: 95
+  Script: {instanceID: 0}
+- Class: 114
+  Script: {fileID: 1980459831, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+- Class: 114
+  Script: {fileID: 708705254, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+- Class: 115
+  Script: {instanceID: 0}
+- Class: 205
+  Script: {instanceID: 0}
+- Class: 212
+  Script: {instanceID: 0}
+- Class: 213
+  Script: {instanceID: 0}
+- Class: 222
+  Script: {instanceID: 0}
+- Class: 223
+  Script: {instanceID: 0}
+- Class: 224
+  Script: {instanceID: 0}
+Assets:
+- Assets/AirportCEOStuff/Prefab/BasicWeatherStation.prefab
+- Assets/AirportCEOStuff/Material/SpriteNonLit.mat
+- Assets/AirportCEOStuff/Texture2D/construction_wire_frame2.png
+- Assets/AirportCEOStuff/AnimatorController/AneometerAnimator.controller
+- Assets/AirportCEOStuff/Texture2D/External_Sprite_Sheet.png
+- Assets/AirportCEOStuff/Material/GeneralDiffuseMaterial.mat
+- Assets/AirportCEOStuff/AnimationClip/AneometerAnimation.anim
+- Assets/AirportCEOStuff/Texture2D/SpriteAtlasTexture-A1 (Group 2)-64x64-fmt10.png
+- Assets/AirportCEOStuff/Material/ExteriorSheetCutoutDiffuse.mat
+- Assets/AirportCEOStuff/AnimatorController/WindDirectionAnimator.controller
+- Assets/AirportCEOStuff/AnimationClip/WindDirectionAnimation.anim
+- Assets/AirportCEOStuff/Texture2D/External_Sprite_Sheet3.png
+Dependencies: []

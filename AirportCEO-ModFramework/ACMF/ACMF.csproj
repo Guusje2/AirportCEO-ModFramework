@@ -9,9 +9,10 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>ACMF</RootNamespace>
     <AssemblyName>ACMF</AssemblyName>
-    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <Deterministic>true</Deterministic>
+    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -23,6 +24,7 @@
     <WarningLevel>4</WarningLevel>
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
     <LangVersion>7.3</LangVersion>
+    <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -32,10 +34,15 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
     <LangVersion>7.3</LangVersion>
+    <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="0Harmony">
       <HintPath>..\Dependencies\0Harmony.dll</HintPath>
+    </Reference>
+    <Reference Include="Assembly-CSharp-firstpass, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Dependencies\Assembly-CSharp-firstpass.dll</HintPath>
     </Reference>
     <Reference Include="Assembly-CSharp_publicized, Version=11.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
@@ -71,10 +78,25 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\Dependencies\UnityEngine.UI.dll</HintPath>
     </Reference>
+    <Reference Include="UnityEngine.UIElementsModule, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Dependencies\UnityEngine.UIElementsModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.UIModule, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Dependencies\UnityEngine.UIModule.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ACMF.cs" />
     <Compile Include="ModHelper\AssetBundles\ACMFAssetBundle.cs" />
+    <Compile Include="ModHelper\BuildMenu\BuildMenuData.cs" />
+    <Compile Include="ModHelper\BuildMenu\BuildMenuItem.cs" />
+    <Compile Include="ModHelper\BuildMenu\BuildMenuView.cs" />
+    <Compile Include="ModHelper\BuildMenu\GameControllerStartPatcher.cs" />
+    <Compile Include="ModHelper\BuildMenu\IAppearInBuildMenu.cs" />
+    <Compile Include="ModHelper\BuildMenu\MoveableWindow.cs" />
+    <Compile Include="ModHelper\BuildMenu\ToggleBuildMenuButton.cs" />
     <Compile Include="ModHelper\Camera\UnboundedCamera.cs" />
     <Compile Include="ModHelper\Config\ACMFConfig.cs" />
     <Compile Include="ModHelper\Config\ConfigManager.cs" />
@@ -92,19 +114,39 @@
     <Compile Include="ModHelper\MainMenu\ModMenuPatcher.cs" />
     <Compile Include="ModHelper\MainMenu\MainMenuShowHideGameMenuPanelsPatcher.cs" />
     <Compile Include="ModHelper\MainMenu\SkipMainMenu.cs" />
+    <Compile Include="ModHelper\ModPrefabs\Placeables\PlaceableItems\ActivePlaceableItemCreators.cs" />
+    <Compile Include="ModHelper\ModPrefabs\Placeables\PlaceableItems\Interfaces\IACMFPlaceableItemCustomSerializationSystem.cs" />
+    <Compile Include="ModHelper\ModPrefabs\Placeables\PlaceableItems\Serialization\PlaceableItemSerializationPatcher.cs" />
+    <Compile Include="ModHelper\ModPrefabs\Placeables\PlaceableItems\Patches\BuildingControllerGetItemGameObjectPatcher.cs" />
+    <Compile Include="ModHelper\ModPrefabs\Placeables\PlaceableItems\Interfaces\IACMFInteractionItemModel.cs" />
+    <Compile Include="ModHelper\ModPrefabs\Placeables\PlaceableItems\PlaceableItemCreator.cs" />
+    <Compile Include="ModHelper\ModPrefabs\Placeables\PlaceableItems\Interfaces\IACMFPlaceableItem.cs" />
+    <Compile Include="ModHelper\ModPrefabs\Placeables\PlaceableItems\Interfaces\IPlaceableItemCreator.cs" />
+    <Compile Include="ModHelper\ModPrefabs\Placeables\PlaceableItems\Serialization\PlaceableItemSerializationWrapper.cs" />
+    <Compile Include="ModHelper\ModPrefabs\Placeables\PlaceableItems\Serialization\PlaceableItemSerializer.cs" />
+    <Compile Include="ModHelper\ModPrefabs\Floors\Patches\PlaceableFloorGetVariationsPatcher.cs" />
+    <Compile Include="ModHelper\ModPrefabs\Placeables\PlaceableObjects\Interfaces\IACMFPlaceableObject.cs" />
+    <Compile Include="ModHelper\ModPrefabs\Placeables\PlaceableStructures\ActivePlaceableStructureCreators.cs" />
+    <Compile Include="ModHelper\ModPrefabs\Placeables\PlaceableStructures\Interfaces\IACMFPlaceableStructure.cs" />
+    <Compile Include="ModHelper\ModPrefabs\Placeables\PlaceableStructures\Interfaces\IPlaceableStructureCreator.cs" />
+    <Compile Include="ModHelper\ModPrefabs\Placeables\PlaceableStructures\Patches\BuildingControllerGetStructureGameObjectPatcher.cs" />
+    <Compile Include="ModHelper\ModPrefabs\Placeables\PlaceableStructures\PlaceableStructureCreator.cs" />
     <Compile Include="ModHelper\ModPrefabs\Procurments\ProcurmentManager.cs" />
     <Compile Include="ModHelper\ModPrefabs\Procurments\ACMFProcurmentTemplate .cs" />
     <Compile Include="ModHelper\ModPrefabs\Vehicles\ACMFServiceVehicleModel.cs" />
-    <Compile Include="ModHelper\ModPrefabs\Vehicles\IServiceVehicleCreator.cs" />
+    <Compile Include="ModHelper\ModPrefabs\Vehicles\ActiveServiceVehicleCreators.cs" />
+    <Compile Include="ModHelper\ModPrefabs\Vehicles\Interfaces\IServiceVehicleCreator.cs" />
     <Compile Include="ModHelper\ModPrefabs\Vehicles\VehicleSerialization\VehicleSerializationPatcher.cs" />
     <Compile Include="ModHelper\ModPrefabs\Vehicles\ServiceVehicleCreator.cs" />
-    <Compile Include="ModHelper\ModPrefabs\Vehicles\VehicleLightManagerPatcher.cs" />
-    <Compile Include="ModHelper\ModPrefabs\Vehicles\VehicleDoorManagerPatcher.cs" />
+    <Compile Include="ModHelper\ModPrefabs\Vehicles\Patches\VehicleLightManagerPatcher.cs" />
+    <Compile Include="ModHelper\ModPrefabs\Vehicles\Patches\VehicleDoorManagerPatcher.cs" />
     <Compile Include="ModHelper\ModPrefabs\Vehicles\VehicleSerialization\VehicleSerializationWrapper.cs" />
     <Compile Include="ModHelper\ModPrefabs\Vehicles\VehicleSerialization\VehicleSerializer.cs" />
-    <Compile Include="ModHelper\PatchTime\PatchTimeMethod.cs" />
+    <Compile Include="ModHelper\PatchTime\MethodAttributes\IPatchTime.cs" />
+    <Compile Include="ModHelper\PatchTime\MethodAttributes\PatchTimeLateMethod.cs" />
+    <Compile Include="ModHelper\PatchTime\MethodAttributes\PatchTimeEarlyMethod.cs" />
+    <Compile Include="ModHelper\PatchTime\MethodAttributes\PatchTimeMethod.cs" />
     <Compile Include="ModHelper\PatchTime\PatchTimeManager.cs" />
-    <Compile Include="ModHelper\Utilities\ActivateCurrentlyDisabledTurnAroundServices.cs" />
     <Compile Include="ModHelper\AssetBundles\Impl\ACMFAssets.cs" />
     <Compile Include="ModHelper\Utilities\Extensions\GameObjectExtensions.cs" />
     <Compile Include="ModHelper\Utilities\JsonSerialization.cs" />
@@ -119,6 +161,8 @@
     <Compile Include="ModLoader\Utilities\Logger.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="ModHelper\ModPrefabs\Placeables\PlaceableStructures\Serialization\" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
