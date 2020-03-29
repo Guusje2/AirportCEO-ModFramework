@@ -30,9 +30,20 @@ namespace SampleModBasicMod
         {
             if (EntryPoint.Config.ALLOW_GAME_CONTROLLER_PATCH && Input.GetKey(KeyCode.LeftShift) && Input.GetKey(KeyCode.LeftControl) && Input.GetKeyDown(KeyCode.B))
             {
-                ACMF.ModHelper.DialogPopup.DialogManager.QueueMessagePanel("Working Postfix Onto GameController::Update");
-                ACMF.ModHelper.Utilities.Logger.ShowNotification("Working Postfix Onto GameController::Update");
+                ACMF.ModHelper.DialogPopup.DialogManager.QueueMessagePanel("ACEOMP is working");
+                ACMF.ModHelper.Utilities.Logger.ShowNotification("ACEOMP is working");
             }
+        }
+    }
+    
+    [HarmonyPatch(typeof(GameControllerPatcher))]
+    [HarmonyPatch("Start")]
+    public class GameControllerPatcher2
+    {
+        [HarmonyPostFix]
+        public static void Postfix()
+        {
+            
         }
     }
 
